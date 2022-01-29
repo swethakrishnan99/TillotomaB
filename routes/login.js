@@ -5,7 +5,8 @@ const stdLoginController = require('../controllers/LoginController/stdLoginContr
 const facultyLoginController = require('../controllers/LoginController/facultyLoginController')
 const adminLoginController = require('../controllers/LoginController/adminLoginController')
 
-router.use(cors());
+router.use(cors())
+
 router.post('/', (req, res) => {
     if (req.body.userType === "student")
         stdLoginController.handleLogin(req, res)
