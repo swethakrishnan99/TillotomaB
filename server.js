@@ -24,8 +24,9 @@ app.use(express.json());
 // app.use('api/v1/students', require('./routes/students'))
 // app.use('api/v1/faculties', require('./routes/faculties'))
 // app.use('api/v1/adminRoute', require('./routes/admin'))
-app.use('/api/v1/register', require('./routes/register'))
 app.use('/api/v1/login', require('./routes/login'))
+app.use('/api/v1/register', require('./routes/register'))
+
 
 mongoose.connection.on('error', () => console.log("Error in connecting the database"))
 mongoose.connection.once('open', () => console.log('connected to database'))
