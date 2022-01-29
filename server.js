@@ -7,6 +7,8 @@ const bcrypt = require('bcrypt')
 const PORT = process.env.PORT || 8000;
 
 const app = express()
+const login = require('./routes/login');
+const register = require('./routes/register')
 
 // connect to MongoDB
 connectDB()
@@ -21,11 +23,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
+
+app.use('/api/v1/login', login)
+app.use('/api/v1/register', register)
+
 // app.use('api/v1/students', require('./routes/students'))
 // app.use('api/v1/faculties', require('./routes/faculties'))
 // app.use('api/v1/adminRoute', require('./routes/admin'))
-app.use('/api/v1/login', require('./routes/login'))
-app.use('/api/v1/register', require('./routes/register'))
 
 
 mongoose.connection.on('error', () => console.log("Error in connecting the database"))
