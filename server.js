@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 8000;
 const app = express()
 const login = require('./routes/login');
 const register = require('./routes/register')
+const students = require('./routes/students')
 
 // connect to MongoDB
 connectDB()
@@ -23,13 +24,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
-
 app.use('/api/v1/login', login)
 app.use('/api/v1/register', register)
 
-// app.use('api/v1/students', require('./routes/students'))
-// app.use('api/v1/faculties', require('./routes/faculties'))
-// app.use('api/v1/adminRoute', require('./routes/admin'))
+app.use('/api/v1/students', students)
+app.use('/api/v1/faculties', require('./routes/faculties'))
+app.use('/api/v1/admin', require('./routes/admin'))
 
 
 mongoose.connection.on('error', () => console.log("Error in connecting the database"))
