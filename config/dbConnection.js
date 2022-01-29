@@ -3,7 +3,10 @@ const url = "mongodb+srv://swethakrishnan99:haritham@cluster0.sygsl.mongodb.net/
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(url)
+        await mongoose.connect(url, {
+            useUnifiedTopology: true,
+            useNewUrlParser: true
+        })
     }
     catch (error) {
         console.error(error)
