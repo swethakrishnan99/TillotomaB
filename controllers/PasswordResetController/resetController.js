@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
     host: "smtp.zoho.com",
     secure: true,
     port: 465,
-    auth: { user: "tillotomapjt@zohomail.in", pass: "Haritham@333" },
+    auth: { user: "v.swe@yahoo.com", pass: "Haritham@333" },
 });
 
 
