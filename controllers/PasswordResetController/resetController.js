@@ -13,8 +13,10 @@ const transporter = nodemailer.createTransport({
 
 const forgotPassword = async (req, res) => {
     console.log(req.body)
-    const { email, user } = req.body;
-    console.log(email - "email", user - "userSchema")
+    const email = req.body.email;
+    const user = req.body.user;
+    // const { email, user } = req.body;
+    console.log(email, "-email", user, "-userSchema")
 
     // find schema
     let userSchema = null;
