@@ -20,18 +20,18 @@ const forgotPassword = async (req, res) => {
 
     // find schema
     let userSchema = null;
-    if (user === "student") {
+    if (user == "student") {
         console.log("entered")
 
         userSchema = student;
     }
-    else if (user === "faculty") {
+    else if (user == "faculty") {
         console.log("entered")
 
         userSchema = faculty;
     }
 
-    else if (userSchema === "admin") {
+    else if (userSchema == "admin") {
         console.log("entered")
         userSchema = admin;
     }
