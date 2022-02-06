@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const cors = require('cors')
 require("dotenv").config()
 const transporter = nodemailer.createTransport({
-    service: "hotmail",
+    service: 'Hotmail',
     auth: { user: "tillotoma@hotmail.com", pass: "TF@tf1234" },
 });
 
