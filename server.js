@@ -30,7 +30,9 @@ app.use('/api/v1/register', register)
 app.use('/api/v1/students', students)
 app.use('/api/v1/faculties', require('./routes/faculties'))
 app.use('/api/v1/admin', require('./routes/admin'))
-app.use('/api/v1/upload', require('./routes/upload'))
+app.use('/api/v1/forget-password', require('./routes/forget'))
+app.use('/api/v1/reset-password', require('./routes/reset'))
+// app.use('/api/v1/upload', require('./routes/upload'))
 
 
 mongoose.connection.on('error', () => console.log("Error in connecting the database"))

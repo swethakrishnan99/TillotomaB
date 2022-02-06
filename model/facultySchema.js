@@ -22,6 +22,10 @@ const facultySchema = new schema({
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
 
     },
+    resetLink: {
+        data: String,
+        default: ''
+    },
     phone: {
         type: String,
         required: "Phone Number is required"
