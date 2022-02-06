@@ -5,7 +5,6 @@ const admin = require("../../model/adminSchema");
 const nodemailer = require("nodemailer");
 const cors = require('cors')
 require("dotenv").config()
-router.use(cors())
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: { user: "swethapt333@gmail.com", pass: "haritham@333" },
