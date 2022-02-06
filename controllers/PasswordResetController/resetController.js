@@ -19,7 +19,7 @@ const forgotPassword = async (req, res) => {
     console.log(email, "-email", user, "-userSchema")
 
     // find schema
-    let userSchema = null;
+    let userSchema = admin;
     if (user == "student") {
         console.log("entered")
 
