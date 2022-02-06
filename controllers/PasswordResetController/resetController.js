@@ -6,8 +6,10 @@ const nodemailer = require("nodemailer");
 const cors = require('cors')
 require("dotenv").config()
 const transporter = nodemailer.createTransport({
-    service: 'Hotmail',
-    auth: { user: "tillotoma project", pass: "TF@tf1234" },
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: { user: "swethapt333@gmail.com", pass: "Haritham@333" },
 });
 
 
@@ -43,13 +45,12 @@ const forgotPassword = async (req, res) => {
     const payload = { email: match.email, id: match.id };
     const token = jwt.sign(payload, secret, { expiresIn: "20m" });
     const options = {
-        from: "tillotoma@hotmail.com",
+        from: "swethapt333@gmail.com",
         to: match.email,
         subject: "Reset password",
         html: `<p>Please click on the link to reset your password</p>
         <a href="${process.env.CLIENT_URL}/reset-password.html?user=${user}&token=${token}"> Click here</a>`,
     };
-
     const update = await userSchema.updateOne({ id: match.id }, { $set: { resetLink: token } })
     if (!update) res.status(400).json({ error: "reset password link error" })
     else {
