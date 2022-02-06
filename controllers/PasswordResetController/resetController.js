@@ -5,13 +5,14 @@ const admin = require("../../model/adminSchema");
 const nodemailer = require("nodemailer");
 const cors = require('cors')
 require("dotenv").config()
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: { user: "swethapt333@gmail.com", pass: "Haritham@333" },
+var transport = nodemailer.createTransport({
+    host: "smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+        user: "2bb15db467b624",
+        pass: "25fedc2e3e8650"
+    }
 });
-
 
 const forgotPassword = async (req, res) => {
     console.log(req.body)
@@ -43,7 +44,7 @@ const forgotPassword = async (req, res) => {
     if (!match) return res.status(400).json({ message: "user not found" });
     const secret = process.env.RESET_KEY + match.password;
     const payload = { email: match.email, id: match.id };
-    const token = jwt.sign(payload, secret, { expiresIn: "20m" });
+    const token = jwt.sign(payload, secret, { expiresIn: "60m" });
     const options = {
         from: "swethapt333@gmail.com",
         to: match.email,
@@ -54,7 +55,7 @@ const forgotPassword = async (req, res) => {
     const update = await userSchema.updateOne({ id: match.id }, { $set: { resetLink: token } })
     if (!update) res.status(400).json({ error: "reset password link error" })
     else {
-        transporter.sendMail(options, (error, info) => {
+        transport.sendMail(options, (error, info) => {
             if (error) throw error;
             return res.status(200).json({ message: "Email has been sent, please follow the instruction" })
 
