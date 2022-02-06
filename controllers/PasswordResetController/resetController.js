@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const cors = require('cors')
 require("dotenv").config()
 const transporter = nodemailer.createTransport({
-    host: "smtp.zoho.com",
+    host: 'smtp.zoho.com',
     secure: true,
     port: 465,
     auth: { user: "v.swe@yahoo.com", pass: "Haritham@333" },
