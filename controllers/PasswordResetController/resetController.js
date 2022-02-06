@@ -45,7 +45,7 @@ const forgotPassword = async (req, res) => {
     const payload = { email: match.email, id: match.id };
     const token = jwt.sign(payload, secret, { expiresIn: "20m" });
     const options = {
-        from: "tillotomapjt@zohomail.in",
+        from: "v.swe@yahoo.com",
         to: match.email,
         subject: "Reset password",
         html: `<p>Please click on the link to reset your password</p>
