@@ -4,7 +4,7 @@ const router = express.Router();
 const resetController = require('../controllers/PasswordResetController/resetController')
 router.use(cors())
 
-router.put("/", resetController.forgotPassword)
+router.put("/", (req, res) => { resetController.forgotPassword(req, res) })
 
 module.exports = router;
 
