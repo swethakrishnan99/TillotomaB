@@ -6,8 +6,10 @@ const nodemailer = require("nodemailer");
 const cors = require('cors')
 require("dotenv").config()
 const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user: "swethapt333@gmail.com", pass: "haritham@333" },
+    host: "smtp.zoho.com",
+    secure: true,
+    port: 465,
+    auth: { user: "tillotomapjt@zohomail.in", pass: "Haritham@333" },
 });
 
 
@@ -43,7 +45,7 @@ const forgotPassword = async (req, res) => {
     const payload = { email: match.email, id: match.id };
     const token = jwt.sign(payload, secret, { expiresIn: "20m" });
     const options = {
-        from: "swethapt333@gmail.com",
+        from: "tillotomapjt@zohomail.in",
         to: match.email,
         subject: "Reset password",
         html: `<p>Please click on the link to reset your password</p>
